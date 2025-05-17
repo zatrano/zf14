@@ -1,0 +1,44 @@
+<div class="card-body login-card-body">
+  <p class="login-box-msg">Parola Güncelleme</p>
+
+  <form method="POST" action="/auth/profile/update-password">
+    <input type="hidden" name="csrf_token" value="{{ .CsrfToken }}">
+
+    <div class="input-group mb-3">
+      <input type="password" class="form-control" name="current_password" placeholder="Mevcut Parola">
+      <div class="input-group-append">
+        <div class="input-group-text">
+          <span class="fas fa-lock"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-group mb-3">
+      <input type="password" class="form-control" name="new_password" placeholder="Yeni Parola">
+      <div class="input-group-append">
+        <div class="input-group-text">
+          <span class="fas fa-key"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-group mb-3">
+      <input type="password" class="form-control" name="confirm_password" placeholder="Yeni Parola (Tekrar)">
+      <div class="input-group-append">
+        <div class="input-group-text">
+          <span class="fas fa-key"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary btn-block">Parolayi Güncelle</button>
+      </div>
+    </div>
+  </form>
+
+  <div class="d-flex justify-content-between">
+    <a href="/auth/login">Ana Sayfaya Dön</a>
+  </div>
+</div>

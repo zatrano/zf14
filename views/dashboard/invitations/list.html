@@ -1,0 +1,58 @@
+<!--begin::Container-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="card shadow-sm mb-4">
+        <div class="card-header">
+          <div class="d-flex justify-content-between align-items-center">
+            <h3 class="card-title mb-0"><strong>{{.Title}}</strong></h3>
+            <div class="float-end">
+              <a href="/dashboard/invitations/create" class="btn btn-sm btn-success">
+                <i class="bi bi-plus-lg"></i> Yeni Ekle
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Başlık</th>
+                <th>Tarih</th>
+                <th>Kategori</th>
+                <th>Kullanıcı</th>
+                <th>İşlemler</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{range $i, $inv := .Invitations}}
+              <tr>
+                <td>{{$inv.ID}}</td>
+                <td>{{$inv.Description}}</td>
+                <td>{{$inv.Date}}</td>
+                <td>{{$inv.Category.Name}}</td>
+                <td>{{$inv.User.Name}}</td>
+                <td>
+                  <a href="/dashboard/invitations/update/{{$inv.ID}}" class="btn btn-sm btn-warning me-1" title="Düzenle">
+                    <i class="bi bi-pencil-square"></i>
+                  </a>
+                  <form action="/dashboard/invitations/delete/{{$inv.ID}}" method="POST" class="d-inline">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-sm btn-danger" title="Sil">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+              {{else}}
+              <tr><td colspan="6" class="text-center">Kayıt bulunamadı.</td></tr>
+              {{end}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--end::Container-->

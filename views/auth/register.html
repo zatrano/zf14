@@ -1,0 +1,54 @@
+<div class="card-body">
+  <p class="login-box-msg">Kayıt Ol</p>
+
+  <form method="POST" action="/auth/register">
+    <input type="hidden" name="csrf_token" value="{{ .CsrfToken }}">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" name="name" placeholder="Ad Soyad">
+      <div class="input-group-append">
+        <div class="input-group-text">
+          <span class="fas fa-user"></span>
+        </div>
+      </div>
+    </div>
+    <div class="input-group mb-3">
+      <input type="email" class="form-control" name="account" placeholder="Email">
+      <div class="input-group-append">
+        <div class="input-group-text">
+          <span class="fas fa-envelope"></span>
+        </div>
+      </div>
+    </div>
+    <div class="input-group mb-3">
+      <input type="password" class="form-control" name="password" placeholder="Parola">
+      <div class="input-group-append">
+        <div class="input-group-text">
+          <span class="fas fa-lock"></span>
+        </div>
+      </div>
+    </div>
+    <div class="input-group mb-3">
+      <input type="password" class="form-control" name="confirm_password" placeholder="Parola (Tekrar)">
+      <div class="input-group-append">
+        <div class="input-group-text">
+          <span class="fas fa-lock"></span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary btn-block">Kayıt Ol</button>
+      </div>
+    </div>
+  </form>
+
+  <div class="social-auth-links text-center mt-2 mb-3">
+    <a href="/auth/google/login" class="btn btn-block btn-danger">
+      <i class="fab fa-google-plus mr-2"></i> Google ile kayıt ol
+    </a>
+  </div>
+
+  <div class="d-flex justify-content-between">
+    <a href="/auth/login">Zaten Üyeyim!</a>
+  </div>
+</div>

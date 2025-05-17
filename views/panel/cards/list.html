@@ -1,0 +1,66 @@
+<!--begin::Container-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title mb-0"><strong>{{.Title}}</strong></h3>
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Ad</th>
+                <th>Slug</th>
+                <th>Kullanıcı</th>
+                <th>Banka(lar)</th>
+                <th>Sosyal Platform(lar)</th>
+                <th>Aktif mi?</th>
+                <th>İşlemler</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{range .Cards}}
+              <tr>
+                <td>{{.ID}}</td>
+                <td>{{.Name}}</td>
+                <td>{{.Slug}}</td>
+                <td>{{.UserID}}</td>
+                <td>
+                  {{range .Banks}}
+                    <span class="badge bg-info">{{.Name}}</span>
+                  {{end}}
+                </td>
+                <td>
+                  {{range .SocialPlatforms}}
+                    <span class="badge bg-primary">{{.Name}}</span>
+                  {{end}}
+                </td>
+                <td>
+                  {{if .IsActive}}
+                    <span class="badge bg-success">Evet</span>
+                  {{else}}
+                    <span class="badge bg-secondary">Hayır</span>
+                  {{end}}
+                </td>
+                <td>
+                  <a href="/panel/cards/update/{{.ID}}" class="btn btn-sm btn-warning">Düzenle</a>
+                  <form action="/panel/cards/delete/{{.ID}}" method="POST" style="display:inline-block;">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Silmek istediğinize emin misiniz?')">Sil</button>
+                  </form>
+                </td>
+              </tr>
+              {{end}}
+            </tbody>
+          </table>
+          <div class="d-flex justify-content-end mt-3">
+            <a href="/panel/cards/create" class="btn btn-success">Yeni Kart Ekle</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--end::Container-->
